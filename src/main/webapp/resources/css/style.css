@@ -1,0 +1,15 @@
+.msg-val {
+	color: red;
+}
+.msg-success {
+	color: green;
+}
+
+.grid {
+  width: 95%;
+  height: 500px;
+}
+
+fieldset { 
+	display: inline-block;
+}
