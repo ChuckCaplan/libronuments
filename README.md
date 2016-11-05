@@ -44,6 +44,8 @@ This will do the following:
 4. Start an embedded Tomcat instance with the code
 5. Launch a browser to the main page of the application
 
+NOTE - Make sure nothing else is running on localhost:8080.
+
 **If you can see the pie chart and a grid full of data then the build was successful!**
 
 # Other Useful Gradle Tasks
