@@ -49,7 +49,7 @@ This will do the following:
 # Other Useful Gradle Tasks
 1. gradle flywayClean flywayMigrate - Clears the DB and re-runs the DB scripts. 
 Useful if the JUnit scripts need to be run or if you need the DB back in its initial state.
-2. gradle clean build - Create a WAR file that can be deployed manually
+2. gradle clean build - Creates a WAR file that can be deployed manually
 
 # Author
 [Chuck Caplan](https://www.linkedin.com/in/charlescaplan)
