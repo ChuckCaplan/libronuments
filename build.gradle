@@ -1,11 +1,51 @@
+// dependencies this build script needs
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.5'
+        classpath 'mysql:mysql-connector-java:5.1.31'
+    }
+}
+
+// all the plugins we are using
+
+// for DB migration
+plugins {
+    id "org.flywaydb.flyway" version "4.0.3"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'war'
+// to run an embedded Tomcat instance
+apply plugin: 'com.bmuschko.tomcat'
+
+// App name
 archivesBaseName = 'Libronuments'
 version = '1' 
+
 repositories {
     mavenCentral()
 }
+
+/**
+This is the primary task that will do all the work. It will:
+1. Clean up old artifacts
+2. Clear the database
+3. Run the DB scripts
+4. Build the code
+5. Run the unit tests
+6. Start an embedded Tomcat instance with the code
+7. Launch a browser to main page
+*/
+task demo (dependsOn: [clean, flywayClean, flywayMigrate, test, tomcatRunWar]) << {
+   java.awt.Desktop.desktop.browse "http://localhost:8080/Libronuments/libronuments/home".toURI()
+}
+
+// this copies the various property files into the resulting WAR
 war { 
     from('etc') { 
         include 'db.properties' 
@@ -13,6 +53,7 @@ war {
         into('WEB-INF/classes') 
     }
 } 
+
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.3.3.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.3.3.RELEASE'
@@ -21,19 +62,51 @@ dependencies {
     compile 'commons-dbcp:commons-dbcp:1.4'
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework:spring-test:4.1.4.RELEASE'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:1.3.3.RELEASE'    
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:1.3.3.RELEASE' 
+    // The Tomcat plugin only officially supports 7.0 so we are using that  
+    def tomcatVersion = '7.0.59'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"     
 } 
 
+// There is a test suite called AllTests. This is the only test that needs to be run.
+// That suite will kick off all the other tests.
 test {
    filter {
       includeTestsMatching "*AllTests"
     }
+    // print the results of each test to the screen
+    afterTest { desc, result -> 
+        println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }    
 }
 
+// we want the embedded Tomcat instance to stay running after the script completes.
+tomcat {
+	daemon = true
+}
+
+// The tests need access to the property files
 sourceSets {
   test {
     resources {
       srcDir "etc"
     }
   }
+}
+
+// This build script also needs access to those property files
+// so we don't have to duplicate all the DB configuration
+ext.dbProperties = new Properties()
+File propertiesFile = new File('etc/db.properties')
+propertiesFile.withInputStream {
+    dbProperties.load(it)
+}
+
+// DB migration configuration
+flyway {
+    user = dbProperties['db.user']
+    password = dbProperties['db.password']
+    url = dbProperties['db.url']
 }
