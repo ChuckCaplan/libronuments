@@ -44,7 +44,7 @@ This will do the following:
 4. Start an embedded Tomcat instance with the code
 5. Launch a browser to the main page of the application
 
-**If you can see the pie chart and grid full of data then the build was successful!**
+**If you can see the pie chart and a grid full of data then the build was successful!**
 
 # Other Useful Gradle Tasks
 1. gradle flywayClean flywayMigrate - Clears the DB and re-runs the DB scripts. 
