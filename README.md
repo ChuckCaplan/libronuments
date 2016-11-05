@@ -37,6 +37,7 @@ Requirements
 ### 2. Run the 'demo' task
 	gradle demo
 This will do the following:
+
 1. Run the DB scripts
 2. Build the code
 3. Run the unit tests
