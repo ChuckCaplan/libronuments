@@ -9,7 +9,7 @@ as well as various software development concepts.
 - Ability to add, delete and update libraries and monuments. Updates occur in-line by double-clicking on data. All changes persist to the DB.
 - All fields are validated.
 - Dynamic pie chart which shows the numbers of libraries, monuments and neighborhoods in Baltimore, MD in real-time.
-- Automated installation - Run one command to run the application in an embedded Tomcat instance.
+- Automated installation - Run one command to compile and run the application in an embedded Tomcat instance.
 - Organized code and data structures, which can serve as a reference on how to use various technologies and how they work together.
 
 # Technologies Used
@@ -44,7 +44,7 @@ This will do the following:
 4. Start an embedded Tomcat instance with the code
 5. Launch a browser to the main page of the application
 
-NOTE - Make sure nothing else is running on localhost:8080.
+NOTE - Make sure nothing else is running on localhost:8080 as that is the address the embedded Tomcat instance uses by default.
 
 **If you can see the pie chart and a grid full of data then the build was successful!**
 
