@@ -42,7 +42,7 @@ This is the primary task that will do all the work. It will:
 7. Launch a browser to main page
 */
 task demo (dependsOn: [clean, flywayClean, flywayMigrate, test, tomcatRunWar]) << {
-   java.awt.Desktop.desktop.browse "http://localhost:8080/Libronuments/libronuments/home".toURI()
+   java.awt.Desktop.desktop.browse "http://localhost:${tomcat.httpPort}/Libronuments/libronuments/home".toURI()
 }
 
 // this copies the various property files into the resulting WAR
@@ -82,9 +82,11 @@ test {
     }    
 }
 
-// we want the embedded Tomcat instance to stay running after the script completes.
 tomcat {
+	// we want the embedded Tomcat instance to stay running after the script completes.
 	daemon = true
+	// this port can be changed if needed
+	httpPort = 8080
 }
 
 // The tests need access to the property files
