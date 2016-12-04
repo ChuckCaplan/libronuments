@@ -1,6 +1,9 @@
 package com.chuckcaplan.libronuments.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -198,6 +201,29 @@ public class LibronumentsController {
 	public ResponseEntity<List<Neighborhood>> getAllNeighborhoods() {
 		List<Neighborhood> list = neighborhoodService.getAll();
 		return new ResponseEntity<List<Neighborhood>>(list, HttpStatus.OK);
+	}
+
+	/**
+	 * @param key
+	 * @return the api key associated with the property key passed in, e.g.
+	 *         "google.maps.api.key"
+	 */
+	public static String getApiKey(String key) {
+		// NOTE - I am purposely loading the properties on demand each time this
+		// is called instead of loading them once and caching them. This is
+		// because I don't want the user to have to bounce the server each time
+		// a property is changed. This should be changed to be cached if this
+		// ever goes into a production environment.
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		// load properties from classpath
+		InputStream input = classLoader.getResourceAsStream("api.properties");
+		Properties properties = new Properties();
+		try {
+			properties.load(input);
+		} catch (IOException e) {
+			logger.error("Error loading api properties", e);
+		}
+		return properties.getProperty(key);
 	}
 
 }
