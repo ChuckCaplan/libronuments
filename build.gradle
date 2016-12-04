@@ -49,6 +49,7 @@ task demo (dependsOn: [clean, flywayClean, flywayMigrate, test, tomcatRunWar]) <
 war { 
     from('etc') { 
         include 'db.properties' 
+        include 'api.properties'
         include 'logback.xml' 
         into('WEB-INF/classes') 
     }
