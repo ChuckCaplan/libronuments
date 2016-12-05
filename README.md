@@ -51,11 +51,11 @@ This will do the following:
 
 NOTE - Make sure nothing else is running on localhost:8080 as that is the address the embedded Tomcat instance uses by default.
 
-**If you can see the pie chart and a grid full of data then the build was successful!**
+**If you can see the map with pins, pie chart and a grid full of data then the build was successful!**
 
 # Other Useful Gradle Tasks
 1. gradle flywayClean flywayMigrate - Clears the DB and re-runs the DB scripts. 
-Useful if the JUnit scripts need to be run or if you need the DB back in its initial state.
+Useful if you need the DB back in its initial state.
 2. gradle clean build - Creates a WAR file that can be deployed manually
 
 # Author
