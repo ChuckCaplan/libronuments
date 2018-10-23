@@ -1,0 +1,15 @@
+com/chuckcaplan/libronuments/config/AppConfig.class
+com/chuckcaplan/libronuments/entity/Monument.class
+com/chuckcaplan/libronuments/dao/LibraryDAO.class
+com/chuckcaplan/libronuments/config/WebAppInitializer.class
+com/chuckcaplan/libronuments/service/MonumentService.class
+com/chuckcaplan/libronuments/service/BaseService.class
+com/chuckcaplan/libronuments/service/NeighborhoodService.class
+com/chuckcaplan/libronuments/entity/Neighborhood.class
+com/chuckcaplan/libronuments/dao/MonumentDAO.class
+com/chuckcaplan/libronuments/entity/Library.class
+com/chuckcaplan/libronuments/service/LibraryService.class
+com/chuckcaplan/libronuments/config/DBConfig.class
+com/chuckcaplan/libronuments/dao/BaseEntityDAO.class
+com/chuckcaplan/libronuments/controller/LibronumentsController.class
+com/chuckcaplan/libronuments/dao/NeighborhoodDAO.class
