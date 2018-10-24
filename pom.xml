@@ -9,11 +9,18 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            	<maven.compiler.source>1.8</maven.compiler.source>
-            	<maven.compiler.target>1.8</maven.compiler.target>
+            	<maven.compiler.source>1.6</maven.compiler.source>
+            	<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 
 	<dependencies>
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.1</version>
+</dependency>
+
 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -36,7 +43,7 @@
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.31</version>
+    <version>8.0.11</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 <dependency>
@@ -66,6 +73,11 @@
 	</dependencies>
 
 	<build>
+    <resources>
+        <resource>
+            <directory>etc</directory>
+        </resource>
+    </resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -79,15 +91,17 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.12.4</version>
-        <configuration>
-          <skipTests>true</skipTests>
-        </configuration>
-      </plugin>
-
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.0</version>
+                <configuration>
+		    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <url>jdbc:mysql://cloudtesting.czncvxin7ngd.us-east-2.rds.amazonaws.com:3306/libronuments?autoReconnect=true&amp;useSSL=false</url>
+                    <user>ccaplan</user>
+		    <password>Abc1234!</password>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>
