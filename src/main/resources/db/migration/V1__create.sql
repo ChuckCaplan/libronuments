@@ -22,14 +22,14 @@ location_txt varchar(100) COMMENT 'Address of the monument'
 
 -- load the data from the csv's
 
-LOAD DATA LOCAL INFILE 'src/main/resources/db/migration/libraries.csv' 
+LOAD DATA LOCAL INFILE 'src/main/resources/db/migration/Libraries.csv' 
 INTO TABLE library 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'src/main/resources/db/migration/monuments.csv' 
+LOAD DATA LOCAL INFILE 'src/main/resources/db/migration/Monuments.csv' 
 INTO TABLE monument
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
