@@ -71,7 +71,7 @@ ADD FOREIGN KEY fk_name(neighborhood_id) REFERENCES mstr_neighborhood(neighborho
 
 alter table monument 
 add column neighborhood_id int COMMENT 'foreign key to neighborhood table',
-ADD FOREIGN KEY fk_name(neighborhood_id) REFERENCES mstr_neighborhood(neighborhood_id);
+ADD FOREIGN KEY fk1_name(neighborhood_id) REFERENCES mstr_neighborhood(neighborhood_id);
 
 -- populate neighborhood_id's and drop text
 
