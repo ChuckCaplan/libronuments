@@ -99,7 +99,7 @@
 		    <driver>com.mysql.cj.jdbc.Driver</driver>
                     <url>jdbc:mysql://cloudtesting.czncvxin7ngd.us-east-2.rds.amazonaws.com:3306/libronuments?autoReconnect=true&amp;useSSL=false</url>
                     <user>ccaplan</user>
-		    <password>Abc1234!</password>
+		    <password>abcdef</password>
                 </configuration>
             </plugin>
 		</plugins>
