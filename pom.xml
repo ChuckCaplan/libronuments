@@ -99,7 +99,7 @@
 		    <driver>com.mysql.cj.jdbc.Driver</driver>
                     <url>${db.url}</url>
                     <user>${db.user}</user>
-		    <password>${db.user}</password>
+		    <password>${db.password}</password>
                 </configuration>
             </plugin>
 		</plugins>
