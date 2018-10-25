@@ -97,9 +97,9 @@
                 <version>5.2.0</version>
                 <configuration>
 		    <driver>com.mysql.cj.jdbc.Driver</driver>
-                    <url>jdbc:mysql://cloudtesting.czncvxin7ngd.us-east-2.rds.amazonaws.com:3306/libronuments?autoReconnect=true&amp;useSSL=false</url>
-                    <user>ccaplan</user>
-		    <password>abcdef</password>
+                    <url>${db.url}</url>
+                    <user>${db.user}</user>
+		    <password>${db.user}</password>
                 </configuration>
             </plugin>
 		</plugins>
