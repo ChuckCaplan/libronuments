@@ -9,7 +9,7 @@
 
 <body ng-app="libronuments">
 
-	<h1>Baltimore Libronuments</h1>
+	<h1>Baltimore Libronuments 1.0</h1>
 
 	<!-- Tables are bad for layout, css should be used.
 		However, the only way I could get both the pie chart canvas and map
