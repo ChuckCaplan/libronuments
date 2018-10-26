@@ -15,7 +15,7 @@
     <dependency>
       <groupId>com.chuckcaplan</groupId>
       <artifactId>libronuments</artifactId>
-      <version>1.0.0-20181025.230902-1</version>
+      <version>${war.version}</version>
       <type>war</type>
     </dependency>
   </dependencies>
